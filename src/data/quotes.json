@@ -1,0 +1,145 @@
+[
+  {
+    "id": "mge-huawei-hybrid",
+    "company": "Master Grid Energy",
+    "option": "5kW Huawei Hybrid Package",
+    "inverterBrand": "Huawei",
+    "inverterType": "Hybrid",
+    "panel": "Jinko Bifacial 640W x8",
+    "capacity": 5.12,
+    "battery": "Not included (battery slot ready)",
+    "price": 850000
+  },
+  {
+    "id": "mge-sungrow-hybrid",
+    "company": "Master Grid Energy",
+    "option": "5kW Sungrow Hybrid System",
+    "inverterBrand": "Sungrow",
+    "inverterType": "Hybrid",
+    "panel": "Jinko 640W x8",
+    "capacity": 5.12,
+    "battery": "Not included (6kWh +630,000 / 5kWh +300,000 optional)",
+    "price": 950000
+  },
+  {
+    "id": "ncg-goodwe-hybrid",
+    "company": "NCG Green Energy",
+    "option": "6.2kWp Goodwe ES-G2 Hybrid",
+    "inverterBrand": "Goodwe",
+    "inverterType": "Hybrid",
+    "panel": "Jinko 620W x10",
+    "capacity": 6.2,
+    "battery": "Not included (Lynx U G3 compatible)",
+    "price": 1076000
+  },
+  {
+    "id": "ncg-goodwe-ongrid",
+    "company": "NCG Green Energy",
+    "option": "6.2kWp Goodwe DNS On-grid",
+    "inverterBrand": "Goodwe",
+    "inverterType": "On-grid",
+    "panel": "Jinko 620W x10",
+    "capacity": 6.2,
+    "battery": "N/A — inverter has no battery support",
+    "price": 895000
+  },
+  {
+    "id": "cameralk-huawei-ongrid",
+    "company": "CameraLK Technologies",
+    "option": "Option 1: Huawei On-grid",
+    "inverterBrand": "Huawei",
+    "inverterType": "On-grid",
+    "panel": "Jinko Bifacial 635W x10",
+    "capacity": 6.35,
+    "battery": "N/A",
+    "price": 950000
+  },
+  {
+    "id": "cameralk-sungrow-hybrid",
+    "company": "CameraLK Technologies",
+    "option": "Option 2: Sungrow Hybrid",
+    "inverterBrand": "Sungrow",
+    "inverterType": "Hybrid",
+    "panel": "Jinko Bifacial 635W x10",
+    "capacity": 6.35,
+    "battery": "Not included",
+    "price": 1200001
+  },
+  {
+    "id": "cameralk-goodwe-hybrid",
+    "company": "CameraLK Technologies",
+    "option": "Option 3: Goodwe Hybrid",
+    "inverterBrand": "Goodwe",
+    "inverterType": "Hybrid",
+    "panel": "Jinko Bifacial 635W x10",
+    "capacity": 6.35,
+    "battery": "Not included",
+    "price": 1150000
+  },
+  {
+    "id": "ceynergy-solax-hybrid",
+    "company": "Ceynergy Dynamic Holdings",
+    "option": "Option 1: Solax Hybrid (incl. 40,000 discount)",
+    "inverterBrand": "Solax",
+    "inverterType": "Hybrid",
+    "panel": "Jinko 640W x8",
+    "capacity": 5.12,
+    "battery": "Not included",
+    "price": 790000
+  },
+  {
+    "id": "ceynergy-solis-hybrid",
+    "company": "Ceynergy Dynamic Holdings",
+    "option": "Option 2: Solis Hybrid (incl. 40,000 discount)",
+    "inverterBrand": "Solis",
+    "inverterType": "Hybrid",
+    "panel": "Jinko 640W x8",
+    "capacity": 5.12,
+    "battery": "Not included",
+    "price": 830000
+  },
+  {
+    "id": "ceynergy-sungrow-hybrid",
+    "company": "Ceynergy Dynamic Holdings",
+    "option": "Option 3: Sungrow Hybrid (incl. 50,000 discount)",
+    "inverterBrand": "Sungrow",
+    "inverterType": "Hybrid",
+    "panel": "Jinko 640W x8",
+    "capacity": 5.12,
+    "battery": "Not included (5kWh Sungrow battery from 360,000)",
+    "price": 1040000
+  },
+  {
+    "id": "eco-goodwe-solis-ongrid",
+    "company": "Eco Green Energy Solutions",
+    "option": "NE080: Goodwe/Solis On-grid (incl. 25,000 discount, valid till 31 Jul 2026)",
+    "inverterBrand": "Goodwe/Solis",
+    "inverterType": "On-grid",
+    "panel": "Jinko Bifacial 635W x10",
+    "capacity": 6.35,
+    "battery": "N/A — on-grid inverter, no battery support",
+    "price": 875000
+  },
+  {
+    "id": "eco-goodwe-solis-hybrid",
+    "company": "Eco Green Energy Solutions",
+    "option": "NE081: Goodwe/Solis Hybrid (incl. 25,000 discount, valid till 31 Jul 2026)",
+    "inverterBrand": "Goodwe/Solis",
+    "inverterType": "Hybrid",
+    "panel": "Jinko Bifacial 635W x10",
+    "capacity": 6.35,
+    "battery": "Not included",
+    "price": 1125000
+  },
+  {
+    "id": "eco-huawei-hybrid",
+    "company": "Eco Green Energy Solutions",
+    "option": "NE082: Huawei Hybrid (incl. 25,000 discount, valid till 31 Jul 2026)",
+    "inverterBrand": "Huawei",
+    "inverterType": "Hybrid",
+    "panel": "Jinko Bifacial 635W x10",
+    "capacity": 6.35,
+    "battery": "Not included",
+    "price": 975000
+  }
+]
