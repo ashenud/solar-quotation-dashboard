@@ -141,5 +141,82 @@
     "capacity": 6.35,
     "battery": "Not included",
     "price": 975000
+  },
+  {
+    "id": "synogen-solis-hybrid",
+    "company": "Synogen (Sino Lanka Power Gen)",
+    "option": "5.58kWp Solis Hybrid System",
+    "inverterBrand": "Solis",
+    "inverterType": "Hybrid",
+    "panel": "Longi 620W x9",
+    "capacity": 5.58,
+    "battery": "Not included",
+    "price": 1076000
+  },
+  {
+    "id": "macksons-sunways-hybrid",
+    "company": "Macksons Solar",
+    "option": "5.16kWp Sunways Hybrid System (Discounted, valid till 24 Jul 2026)",
+    "inverterBrand": "Sunways",
+    "inverterType": "Hybrid",
+    "panel": "Longi Bifacial 645W x8",
+    "capacity": 5.16,
+    "battery": "Not included",
+    "price": 1150000
+  },
+  {
+    "id": "envolta-goodwe-solis-ongrid",
+    "company": "Envolta Energy",
+    "option": "Budget Solution: Goodwe/Solis On-grid",
+    "inverterBrand": "Goodwe/Solis",
+    "inverterType": "On-grid",
+    "panel": "JA Bifacial 640W x8",
+    "capacity": 5.12,
+    "battery": "N/A — on-grid inverter, no battery support",
+    "price": 800000
+  },
+  {
+    "id": "envolta-sungrow-ongrid",
+    "company": "Envolta Energy",
+    "option": "Intermediate Solution: Sungrow On-grid",
+    "inverterBrand": "Sungrow",
+    "inverterType": "On-grid",
+    "panel": "JA Bifacial 640W x8",
+    "capacity": 5.12,
+    "battery": "N/A — on-grid inverter, no battery support",
+    "price": 825000
+  },
+  {
+    "id": "envolta-huawei-ongrid",
+    "company": "Envolta Energy",
+    "option": "Premium Offer: Huawei On-grid",
+    "inverterBrand": "Huawei",
+    "inverterType": "On-grid",
+    "panel": "JA Bifacial 640W x8",
+    "capacity": 5.12,
+    "battery": "N/A — on-grid inverter, no battery support",
+    "price": 850000
+  },
+  {
+    "id": "envolta-sungrow-hybrid-battery",
+    "company": "Envolta Energy",
+    "option": "5kW Sungrow/Goodwe/Solis Hybrid System incl. 5kWh Battery (incl. 76,000 discount)",
+    "inverterBrand": "Sungrow/Goodwe/Solis",
+    "inverterType": "Hybrid",
+    "panel": "JA Bifacial 640W x8",
+    "capacity": 5.12,
+    "battery": "Included — Solis IntelliHome-5kWh-OD (Pylontech, 10yr warranty)",
+    "price": 1100000
+  },
+  {
+    "id": "stanthonys-sungrow-hybrid",
+    "company": "St. Anthony's Solar",
+    "option": "5.95kWp Sungrow Hybrid 1P System (incl. 109,500 discount)",
+    "inverterBrand": "Sungrow",
+    "inverterType": "Hybrid",
+    "panel": "JA Bifacial 595W x10",
+    "capacity": 5.95,
+    "battery": "Not included",
+    "price": 1095000
   }
 ]
