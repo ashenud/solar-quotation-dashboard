@@ -19,6 +19,8 @@ export interface SummaryStats {
   medianPrice: number;
   minPerKwp: QuoteWithMetrics;
   avgPerKwp: number;
+  avgCapacity: number;
+  batteryIncludedCount: number;
 }
 
 export function summarize(quotes: QuoteWithMetrics[]): SummaryStats {
@@ -27,6 +29,8 @@ export function summarize(quotes: QuoteWithMetrics[]): SummaryStats {
   const minPerKwp = quotes.reduce((a, b) => (b.perKwp < a.perKwp ? b : a));
   const avgPrice = quotes.reduce((sum, q) => sum + q.price, 0) / quotes.length;
   const avgPerKwp = quotes.reduce((sum, q) => sum + q.perKwp, 0) / quotes.length;
+  const avgCapacity = quotes.reduce((sum, q) => sum + q.capacity, 0) / quotes.length;
+  const batteryIncludedCount = quotes.filter((q) => q.battery.trim().toLowerCase().startsWith("included")).length;
 
   return {
     count: quotes.length,
@@ -37,6 +41,8 @@ export function summarize(quotes: QuoteWithMetrics[]): SummaryStats {
     medianPrice: median(quotes.map((q) => q.price)),
     minPerKwp,
     avgPerKwp,
+    avgCapacity,
+    batteryIncludedCount,
   };
 }
 
@@ -80,6 +86,26 @@ export function avgPerKwpByType(quotes: QuoteWithMetrics[]): TypeAggregate[] {
   return [...byType.entries()].map(([inverterType, list]) => ({
     inverterType,
     avgPerKwp: list.reduce((sum, q) => sum + q.perKwp, 0) / list.length,
+    count: list.length,
+  }));
+}
+
+export interface CheapestByType {
+  inverterType: string;
+  quote: QuoteWithMetrics;
+  count: number;
+}
+
+export function cheapestByType(quotes: QuoteWithMetrics[]): CheapestByType[] {
+  const byType = new Map<string, QuoteWithMetrics[]>();
+  for (const q of quotes) {
+    const list = byType.get(q.inverterType) ?? [];
+    list.push(q);
+    byType.set(q.inverterType, list);
+  }
+  return [...byType.entries()].map(([inverterType, list]) => ({
+    inverterType,
+    quote: list.reduce((a, b) => (b.price < a.price ? b : a)),
     count: list.length,
   }));
 }

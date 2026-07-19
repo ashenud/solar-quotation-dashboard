@@ -11,6 +11,7 @@ export function StatTiles({ stats }: { stats: SummaryStats }) {
   const tiles: Tile[] = [
     { label: "Quotations", value: String(stats.count), detail: `${stats.companyCount} companies` },
     { label: "Lowest Price", value: formatCurrency(stats.minPrice.price), detail: stats.minPrice.company },
+    { label: "Highest Price", value: formatCurrency(stats.maxPrice.price), detail: stats.maxPrice.company },
     {
       label: "Best LKR / kWp",
       value: formatCurrency(stats.minPerKwp.perKwp),
@@ -18,10 +19,16 @@ export function StatTiles({ stats }: { stats: SummaryStats }) {
     },
     { label: "Average Price", value: formatCurrency(Math.round(stats.avgPrice)) },
     { label: "Median Price", value: formatCurrency(Math.round(stats.medianPrice)) },
+    { label: "Avg. Capacity", value: `${stats.avgCapacity.toFixed(2)} kWp` },
+    {
+      label: "Battery Included",
+      value: `${stats.batteryIncludedCount} / ${stats.count}`,
+      detail: "options with a battery bundled in",
+    },
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
       {tiles.map((t) => (
         <div
           key={t.label}

@@ -2,16 +2,19 @@ import { useMemo, useState } from "react";
 import rawQuotes from "./data/quotes.json";
 import type { Filters, Quote, SortKey } from "./types";
 import { withMetrics, summarize } from "./utils/analysis";
+import { useTheme } from "./hooks/useTheme";
 import { FilterBar } from "./components/FilterBar";
 import { QuoteTable } from "./components/QuoteTable";
 import { StatTiles } from "./components/StatTiles";
 import { AnalysisSection } from "./components/AnalysisSection";
+import { ThemeToggle } from "./components/ThemeToggle";
 
 const quotes = withMetrics(rawQuotes as Quote[]);
 
 const EMPTY_FILTERS: Filters = { company: "", inverterType: "", inverterBrand: "", battery: "" };
 
 export default function App() {
+  const [theme, setTheme] = useTheme();
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [sortKey, setSortKey] = useState<SortKey>("price");
   const [sortAsc, setSortAsc] = useState(true);
@@ -51,14 +54,17 @@ export default function App() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-      <header className="mb-6">
-        <h1 className="text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
-          Solar Quotation Comparison
-        </h1>
-        <p className="mt-1 text-sm text-[var(--text-secondary)]">
-          5kW+ rooftop solar options across {stats.companyCount} companies. Click column headers to sort, use the
-          filters to narrow down, and check the analysis below for a wider comparison.
-        </p>
+      <header className="mb-6 flex items-start justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
+            Solar Quotation Comparison
+          </h1>
+          <p className="mt-1 text-sm text-[var(--text-secondary)]">
+            5kW+ rooftop solar options across {stats.companyCount} companies. Click column headers to sort, use the
+            filters to narrow down, and check the analysis below for a wider comparison.
+          </p>
+        </div>
+        <ThemeToggle theme={theme} onChange={setTheme} />
       </header>
 
       <section className="mb-6">
