@@ -1,6 +1,7 @@
 import { avgPerKwpByType, avgPriceByCompany } from "../utils/analysis";
-import type { QuoteWithMetrics } from "../types";
+import type { InverterType, QuoteWithMetrics } from "../types";
 import { formatCurrency } from "../utils/format";
+import { INVERTER_TYPE_STYLES } from "../utils/inverterTypeColors";
 import { HorizontalBarList, type BarDatum } from "./charts/HorizontalBarList";
 
 function ChartCard({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
@@ -26,17 +27,13 @@ export function AnalysisSection({ quotes }: { quotes: QuoteWithMetrics[] }) {
     tooltip: `${c.optionCount} option${c.optionCount > 1 ? "s" : ""} · from ${formatCurrency(c.minPrice)}`,
   }));
 
-  const typeColors: Record<string, string> = {
-    Hybrid: "var(--series-blue)",
-    "On-grid": "var(--series-green)",
-  };
   const typeData: BarDatum[] = typeAgg
     .sort((a, b) => a.avgPerKwp - b.avgPerKwp)
     .map((t) => ({
       key: t.inverterType,
       label: t.inverterType,
       value: t.avgPerKwp,
-      color: typeColors[t.inverterType] ?? "var(--series-violet)",
+      color: INVERTER_TYPE_STYLES[t.inverterType as InverterType].chartColor,
       valueLabel: formatCurrency(Math.round(t.avgPerKwp)),
       tooltip: `${t.count} quotation${t.count > 1 ? "s" : ""} averaged`,
     }));
@@ -46,10 +43,7 @@ export function AnalysisSection({ quotes }: { quotes: QuoteWithMetrics[] }) {
       <ChartCard title="Average Price by Company" subtitle="Lower is better · averaged across each company's submitted options">
         <HorizontalBarList data={companyData} ariaLabel="Average price by company" />
       </ChartCard>
-      <ChartCard
-        title="Avg. LKR / kWp: Hybrid vs On-grid"
-        subtitle="Cost efficiency per installed kWp by inverter type"
-      >
+      <ChartCard title="Avg. LKR / kWp by Inverter Type" subtitle="Cost efficiency per installed kWp by inverter type">
         <HorizontalBarList data={typeData} ariaLabel="Average price per kWp by inverter type" />
       </ChartCard>
     </div>

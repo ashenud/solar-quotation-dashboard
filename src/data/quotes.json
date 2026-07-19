@@ -218,5 +218,60 @@
     "capacity": 5.95,
     "battery": "Not included",
     "price": 1095000
+  },
+  {
+    "id": "energypower-ongrid",
+    "company": "Energy Power Pvt Ltd",
+    "option": "5kW On-Grid Solar System",
+    "inverterBrand": "Solis/Goodwe/Huawei/Deye",
+    "inverterType": "On-grid",
+    "panel": "Jinko JA AE/Longi 625W x8",
+    "capacity": 5.0,
+    "battery": "N/A — on-grid inverter, no battery support",
+    "price": 825000
+  },
+  {
+    "id": "energypower-hybrid",
+    "company": "Energy Power Pvt Ltd",
+    "option": "5kW Hybrid Solar System",
+    "inverterBrand": "Solis/Goodwe/Huawei/Deye",
+    "inverterType": "Hybrid",
+    "panel": "Jinko JA AE/Longi 625W x8",
+    "capacity": 5.0,
+    "battery": "Included — Goodwe/Solis/Dyness/Evoltra/Pythone 5kWh",
+    "price": 1475000
+  },
+  {
+    "id": "energypower-offgrid",
+    "company": "Energy Power Pvt Ltd",
+    "option": "5kW Off-Grid Solar System",
+    "inverterBrand": "Solis/Goodwe/Huawei/Deye",
+    "inverterType": "Off-grid",
+    "panel": "Jinko JA AE/Longi 625W x8",
+    "capacity": 5.0,
+    "battery": "Included — Goodwe/Solis/Dyness/Evoltra/Pythone 5kWh",
+    "price": 1375000
+  },
+  {
+    "id": "energypower-goodwe-hybrid-v2",
+    "company": "Energy Power Pvt Ltd",
+    "option": "5kW Goodwe Hybrid System (WhatsApp Quote)",
+    "inverterBrand": "Goodwe",
+    "inverterType": "Hybrid",
+    "panel": "Jinko 635/640W x8",
+    "capacity": 5.1,
+    "battery": "Not included",
+    "price": 1050000
+  },
+  {
+    "id": "energypower-huawei-hybrid-v2",
+    "company": "Energy Power Pvt Ltd",
+    "option": "5kW Huawei Hybrid System (WhatsApp Quote)",
+    "inverterBrand": "Huawei",
+    "inverterType": "Hybrid",
+    "panel": "Jinko 635/640W x8",
+    "capacity": 5.1,
+    "battery": "Not included",
+    "price": 850000
   }
 ]

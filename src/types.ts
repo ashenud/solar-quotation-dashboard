@@ -1,4 +1,4 @@
-export type InverterType = "Hybrid" | "On-grid";
+export type InverterType = "Hybrid" | "On-grid" | "Off-grid";
 
 export interface Quote {
   id: string;
