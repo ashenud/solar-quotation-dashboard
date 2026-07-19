@@ -1,5 +1,6 @@
 import type { QuoteWithMetrics, SortKey } from "../types";
 import { formatNumber } from "../utils/format";
+import { INVERTER_TYPE_STYLES } from "../utils/inverterTypeColors";
 
 interface Column {
   key: SortKey;
@@ -69,11 +70,7 @@ export function QuoteTable({ rows, sortKey, sortAsc, onSort }: QuoteTableProps) 
               <td className="border-t border-[var(--border)] px-3 py-2.5 align-top">{d.inverterBrand}</td>
               <td className="border-t border-[var(--border)] px-3 py-2.5 align-top">
                 <span
-                  className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${
-                    d.inverterType === "Hybrid"
-                      ? "bg-[var(--series-blue)]/15 text-[var(--series-blue)]"
-                      : "bg-[var(--text-muted)]/15 text-[var(--text-secondary)]"
-                  }`}
+                  className={`inline-block rounded-full px-2 py-0.5 text-xs font-medium ${INVERTER_TYPE_STYLES[d.inverterType].badgeBg} ${INVERTER_TYPE_STYLES[d.inverterType].badgeText}`}
                 >
                   {d.inverterType}
                 </span>
