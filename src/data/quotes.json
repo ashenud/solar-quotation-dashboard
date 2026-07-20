@@ -273,5 +273,16 @@
     "capacity": 5.1,
     "battery": "Not included",
     "price": 850000
+  },
+  {
+    "id": "gaia-goodwe-hybrid",
+    "company": "GAIA Green Energy Holdings",
+    "option": "5kW GoodWe Hybrid System, without Battery (incl. 35,580 discount)",
+    "inverterBrand": "GoodWe",
+    "inverterType": "Hybrid",
+    "panel": "Jinko Mono N-Type 635W x8",
+    "capacity": 5.08,
+    "battery": "Not included",
+    "price": 1196000
   }
 ]
