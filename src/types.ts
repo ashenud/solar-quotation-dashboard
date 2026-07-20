@@ -4,9 +4,10 @@ export interface Quote {
   id: string;
   company: string;
   option: string;
-  inverterBrand: string;
+  inverterBrand: string[];
   inverterType: InverterType;
   panel: string;
+  panelBrand: string[];
   capacity: number;
   battery: string;
   price: number;
@@ -24,5 +25,6 @@ export interface Filters {
   company: string;
   inverterType: string;
   inverterBrand: string;
+  panelBrand: string;
   battery: BatteryFilter;
 }

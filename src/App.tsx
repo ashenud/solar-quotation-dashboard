@@ -11,7 +11,7 @@ import { ThemeToggle } from "./components/ThemeToggle";
 
 const quotes = withMetrics(rawQuotes as Quote[]);
 
-const EMPTY_FILTERS: Filters = { company: "", inverterType: "", inverterBrand: "", battery: "" };
+const EMPTY_FILTERS: Filters = { company: "", inverterType: "", inverterBrand: "", panelBrand: "", battery: "" };
 
 export default function App() {
   const [theme, setTheme] = useTheme();
@@ -24,7 +24,8 @@ export default function App() {
       (q) =>
         (!filters.company || q.company === filters.company) &&
         (!filters.inverterType || q.inverterType === filters.inverterType) &&
-        (!filters.inverterBrand || q.inverterBrand === filters.inverterBrand) &&
+        (!filters.inverterBrand || q.inverterBrand.includes(filters.inverterBrand)) &&
+        (!filters.panelBrand || q.panelBrand.includes(filters.panelBrand)) &&
         (!filters.battery || q.battery.includes(filters.battery))
     );
   }, [filters]);
