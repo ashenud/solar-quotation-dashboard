@@ -52,9 +52,11 @@ function Select({
 export function FilterBar({ quotes, filters, onChange }: FilterBarProps) {
   const companies = uniqueSorted(quotes.map((q) => q.company));
   const types = uniqueSorted(quotes.map((q) => q.inverterType));
-  const brands = uniqueSorted(quotes.map((q) => q.inverterBrand));
+  const inverterBrands = uniqueSorted(quotes.flatMap((q) => q.inverterBrand));
+  const panelBrands = uniqueSorted(quotes.flatMap((q) => q.panelBrand));
 
-  const hasActiveFilters = filters.company || filters.inverterType || filters.inverterBrand || filters.battery;
+  const hasActiveFilters =
+    filters.company || filters.inverterType || filters.inverterBrand || filters.panelBrand || filters.battery;
 
   return (
     <div className="flex flex-wrap items-end gap-3 rounded-lg border border-[var(--border)] bg-[var(--surface-1)] p-4">
@@ -77,7 +79,17 @@ export function FilterBar({ quotes, filters, onChange }: FilterBarProps) {
         label="Inverter Brand"
         value={filters.inverterBrand}
         onChange={(v) => onChange({ ...filters, inverterBrand: v })}
-        options={[{ value: "", label: "All Inverter Brands" }, ...brands.map((b) => ({ value: b, label: b }))]}
+        options={[
+          { value: "", label: "All Inverter Brands" },
+          ...inverterBrands.map((b) => ({ value: b, label: b })),
+        ]}
+      />
+      <Select
+        id="fPanelBrand"
+        label="Panel Brand"
+        value={filters.panelBrand}
+        onChange={(v) => onChange({ ...filters, panelBrand: v })}
+        options={[{ value: "", label: "All Panel Brands" }, ...panelBrands.map((b) => ({ value: b, label: b }))]}
       />
       <Select
         id="fBattery"
@@ -89,7 +101,7 @@ export function FilterBar({ quotes, filters, onChange }: FilterBarProps) {
       {hasActiveFilters && (
         <button
           type="button"
-          onClick={() => onChange({ company: "", inverterType: "", inverterBrand: "", battery: "" })}
+          onClick={() => onChange({ company: "", inverterType: "", inverterBrand: "", panelBrand: "", battery: "" })}
           className="rounded-md border border-[var(--border)] px-3 py-2 text-xs font-medium text-[var(--text-secondary)] transition-colors hover:border-[var(--series-red)] hover:text-[var(--series-red)]"
         >
           Clear filters
