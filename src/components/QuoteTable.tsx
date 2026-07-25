@@ -25,16 +25,32 @@ interface QuoteTableProps {
   sortKey: SortKey;
   sortAsc: boolean;
   onSort: (key: SortKey) => void;
+  compareIds: Set<string>;
+  onToggleCompare: (id: string) => void;
+  compareLimitReached: boolean;
+  compareLimit: number;
 }
 
-export function QuoteTable({ rows, sortKey, sortAsc, onSort }: QuoteTableProps) {
+export function QuoteTable({
+  rows,
+  sortKey,
+  sortAsc,
+  onSort,
+  compareIds,
+  onToggleCompare,
+  compareLimitReached,
+  compareLimit,
+}: QuoteTableProps) {
   const minPrice = rows.length ? Math.min(...rows.map((r) => r.price)) : 0;
 
   return (
     <div className="overflow-x-auto rounded-lg border border-[var(--border)]">
-      <table className="w-full min-w-[900px] border-collapse text-sm">
+      <table className="w-full min-w-[960px] border-collapse text-sm">
         <thead>
           <tr>
+            <th className="whitespace-nowrap bg-[#1f1e1c] px-3 py-2.5 text-left font-medium text-white">
+              <span className="sr-only">Compare</span>
+            </th>
             {COLUMNS.map((col) => {
               const active = sortKey === col.key;
               return (
@@ -58,13 +74,27 @@ export function QuoteTable({ rows, sortKey, sortAsc, onSort }: QuoteTableProps) 
           </tr>
         </thead>
         <tbody>
-          {rows.map((d, i) => (
+          {rows.map((d, i) => {
+            const checked = compareIds.has(d.id);
+            const disabled = !checked && compareLimitReached;
+            return (
             <tr
               key={d.id}
               className={`${i % 2 === 1 ? "bg-[var(--gridline)]/30" : ""} ${
                 d.price === minPrice ? "bg-[var(--status-good)]/10" : ""
-              }`}
+              } ${checked ? "outline outline-2 -outline-offset-2 outline-[var(--series-blue)]" : ""}`}
             >
+              <td className="border-t border-[var(--border)] px-3 py-2.5 align-top">
+                <input
+                  type="checkbox"
+                  checked={checked}
+                  disabled={disabled}
+                  onChange={() => onToggleCompare(d.id)}
+                  aria-label={`Compare ${d.option}`}
+                  title={disabled ? `You can compare up to ${compareLimit} quotations at a time` : "Add to comparison"}
+                  className="h-4 w-4 accent-[var(--series-blue)] disabled:cursor-not-allowed disabled:opacity-40"
+                />
+              </td>
               <td className="border-t border-[var(--border)] px-3 py-2.5 align-top">{d.company}</td>
               <td className="border-t border-[var(--border)] px-3 py-2.5 align-top">{d.option}</td>
               <td className="border-t border-[var(--border)] px-3 py-2.5 align-top">{d.inverterBrand.join(" / ")}</td>
@@ -94,10 +124,11 @@ export function QuoteTable({ rows, sortKey, sortAsc, onSort }: QuoteTableProps) 
                 {formatNumber(d.perKwp)}
               </td>
             </tr>
-          ))}
+            );
+          })}
           {rows.length === 0 && (
             <tr>
-              <td colSpan={COLUMNS.length} className="px-3 py-8 text-center text-[var(--text-muted)]">
+              <td colSpan={COLUMNS.length + 1} className="px-3 py-8 text-center text-[var(--text-muted)]">
                 No quotations match the selected filters.
               </td>
             </tr>
