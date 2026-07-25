@@ -434,5 +434,37 @@
     "capacity": 5.08,
     "battery": "Not included",
     "price": 1196000
+  },
+  {
+    "id": "suntastic-goodwe-ongrid",
+    "company": "Suntastic Energy Solutions",
+    "option": "5kW GoodWe On-grid System (Quotation QFBMA4620)",
+    "inverterBrand": [
+      "GoodWe"
+    ],
+    "inverterType": "On-grid",
+    "panel": "Jinko Bi-Facial 635W N-Type x8",
+    "panelBrand": [
+      "Jinko"
+    ],
+    "capacity": 5.08,
+    "battery": "N/A — on-grid inverter, no battery support",
+    "price": 900000
+  },
+  {
+    "id": "suntastic-goodwe-hybrid",
+    "company": "Suntastic Energy Solutions",
+    "option": "5kW GoodWe Hybrid System, without Battery (Quotation QFBMA4621)",
+    "inverterBrand": [
+      "GoodWe"
+    ],
+    "inverterType": "Hybrid",
+    "panel": "Jinko Bi-Facial 635W N-Type x8",
+    "panelBrand": [
+      "Jinko"
+    ],
+    "capacity": 5.08,
+    "battery": "Not included",
+    "price": 1090000
   }
 ]
