@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import rawQuotes from "./data/quotes.json";
-import type { Filters, Quote, SortKey } from "./types";
+import type { Filters, Quote, QuoteWithMetrics, SortKey } from "./types";
 import { withMetrics, summarize } from "./utils/analysis";
 import { useTheme } from "./hooks/useTheme";
 import { FilterBar } from "./components/FilterBar";
@@ -8,8 +8,10 @@ import { QuoteTable } from "./components/QuoteTable";
 import { StatTiles } from "./components/StatTiles";
 import { AnalysisSection } from "./components/AnalysisSection";
 import { ThemeToggle } from "./components/ThemeToggle";
+import { ComparisonPanel } from "./components/ComparisonPanel";
 
 const quotes = withMetrics(rawQuotes as Quote[]);
+const COMPARE_LIMIT = 4;
 
 const EMPTY_FILTERS: Filters = { company: "", inverterType: "", inverterBrand: "", panelBrand: "", battery: "" };
 
@@ -18,6 +20,7 @@ export default function App() {
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
   const [sortKey, setSortKey] = useState<SortKey>("price");
   const [sortAsc, setSortAsc] = useState(true);
+  const [compareIds, setCompareIds] = useState<string[]>([]);
 
   const filteredRows = useMemo(() => {
     return quotes.filter(
@@ -44,6 +47,12 @@ export default function App() {
   const analysisRows = filteredRows.length ? filteredRows : quotes;
   const stats = useMemo(() => summarize(analysisRows), [analysisRows]);
 
+  const compareIdSet = useMemo(() => new Set(compareIds), [compareIds]);
+  const compareQuotes = useMemo(
+    () => compareIds.map((id) => quotes.find((q) => q.id === id)).filter((q): q is QuoteWithMetrics => !!q),
+    [compareIds]
+  );
+
   function handleSort(key: SortKey) {
     if (key === sortKey) {
       setSortAsc((asc) => !asc);
@@ -51,6 +60,18 @@ export default function App() {
       setSortKey(key);
       setSortAsc(true);
     }
+  }
+
+  function toggleCompare(id: string) {
+    setCompareIds((prev) => {
+      if (prev.includes(id)) {
+        return prev.filter((x) => x !== id);
+      }
+      if (prev.length >= COMPARE_LIMIT) {
+        return prev;
+      }
+      return [...prev, id];
+    });
   }
 
   return (
@@ -77,8 +98,28 @@ export default function App() {
       </section>
 
       <section className="mb-8">
-        <QuoteTable rows={sortedRows} sortKey={sortKey} sortAsc={sortAsc} onSort={handleSort} />
+        <QuoteTable
+          rows={sortedRows}
+          sortKey={sortKey}
+          sortAsc={sortAsc}
+          onSort={handleSort}
+          compareIds={compareIdSet}
+          onToggleCompare={toggleCompare}
+          compareLimitReached={compareIds.length >= COMPARE_LIMIT}
+          compareLimit={COMPARE_LIMIT}
+        />
       </section>
+
+      {compareQuotes.length > 0 && (
+        <section className="mb-8">
+          <ComparisonPanel
+            quotes={compareQuotes}
+            onRemove={toggleCompare}
+            onClearAll={() => setCompareIds([])}
+            limit={COMPARE_LIMIT}
+          />
+        </section>
+      )}
 
       <section className="mb-8">
         <h2 className="mb-3 text-lg font-semibold text-[var(--text-primary)]">Analysis</h2>
